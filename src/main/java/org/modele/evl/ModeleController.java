@@ -136,7 +136,7 @@ public class ModeleController {
 				
 				JFrame parentFrame = new JFrame();		 
 				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setDialogTitle("Spécifier un fichier à enregistrer");   		 
+				fileChooser.setDialogTitle("Specifier un fichier a enregistrer");   		 
 				int userSelection = fileChooser.showSaveDialog(parentFrame);		 
 				if (userSelection == JFileChooser.APPROVE_OPTION) {
 				    File fileToSave = fileChooser.getSelectedFile();		    
@@ -188,7 +188,7 @@ private Article article = new Article ();
      Dimonsion dimonsion,Qstionne qest,Hypothse hypo,choix choix,Moderateur moder) {
 	 ModeleDaoImpl dao=new ModeleDaoImpl();
 	 if(moder.getModerateur()!=null) {
-	 	int idmorder =dao.nbrmoderateur()+100;String id ="Modérateur"+idmorder;
+	 	int idmorder =dao.nbrmoderateur()+100;String id ="Moderateur"+idmorder;
 	 dao.addModerateur(moder.getModerateur(), moder.getEnoncehypothesees(),   form.getnomModel(), id);	
 	 }
 	 if(choix.getChoix()!=null) {
@@ -209,8 +209,8 @@ private Article article = new Article ();
 	 		int iddimonsion=dao.nbrdimonsion()+100; String id ="Dimension"+iddimonsion;
 	 	dao.addDimonsion(dimonsion.getNom(), dimonsion.getDescreption(), dimonsion.getNommere(), dimonsion.getType(), "http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Dimension",  form.getnomModel(), id);
 	 	}else {
-	 		int iddimonsion=dao.nbrCretaire()+100; String id ="Critére"+iddimonsion;
-	 	dao.addDimonsion(dimonsion.getNom(), dimonsion.getDescreption(), dimonsion.getNommere(), dimonsion.getType(), "http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére",  form.getnomModel(), id);
+	 		int iddimonsion=dao.nbrCretaire()+100; String id ="Critere"+iddimonsion;
+	 	dao.addDimonsion(dimonsion.getNom(), dimonsion.getDescreption(), dimonsion.getNommere(), dimonsion.getType(), "http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere",  form.getnomModel(), id);
 	 	}
 
 	 }
@@ -303,7 +303,7 @@ public String modifiermodele(Model model,@PathVariable("id") String id,Form upda
 		     dimF=m.getAllDimonsion(id);
 		 	for(int i=0; i<dimF.size();i++) {
 				if(dimF.get(i).getNom()!=null) {
-				if((dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére"))
+				if((dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere"))
 				|| (dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Dimension"))) {
 				Dimonsion d= new Dimonsion();
 				d.setNom(dimF.get(i).getNom());
@@ -332,7 +332,7 @@ public String modifiermodele(Model model,@PathVariable("id") String id,Form upda
 		 			  dimF=m.getAllDimonsion(id);
 		 			 	for(int i=0; i<dimF.size();i++) {
 		 					if(dimF.get(i).getNom()!=null) {
-		 					if((dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére"))
+		 					if((dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere"))
 		 					|| (dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Dimension"))) {
 		 					Dimonsion d= new Dimonsion();
 		 					d.setNom(dimF.get(i).getNom());
@@ -357,7 +357,7 @@ public String modifiermodele(Model model,@PathVariable("id") String id,Form upda
 			ArrayList<choix> choixx = new ArrayList<choix>() ;
 			ArrayList<choix> choixTmp =new ArrayList<choix> ();
 			for(int i=0; i<dimF.size();i++) {
-				if(dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")){
+				if(dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")){
 					int k=0;
 						for(int j=0;j<Cre.size();j++) {
 							if(dimF.get(i).getNom().equals(Cre.get(j).getNomC())) {
@@ -402,7 +402,7 @@ public String modifiermodele(Model model,@PathVariable("id") String id,Form upda
 					 }
 			 }
 					for(int i=0; i<dimF.size();i++) {
-						if(dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")){
+						if(dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")){
 							int k=0;
 								for(int j=0;j<Cre.size();j++) {
 									if(dimF.get(i).getNom().equals(Cre.get(j).getNomC())) {
@@ -445,7 +445,7 @@ public String modifiermodele(Model model,@PathVariable("id") String id,Form upda
 					 }
 			 }				 
 					for(int i=0; i<dimF.size();i++) {
-						if(dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")){
+						if(dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")){
 							int k=0;
 								for(int j=0;j<Cre.size();j++) {
 									if(dimF.get(i).getNom().equals(Cre.get(j).getNomC())) {
@@ -477,7 +477,7 @@ public String modifiermodele(Model model,@PathVariable("id") String id,Form upda
 			   }
 			 }			
 			for(int i=0; i<dimF.size();i++) {
-				if(dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")){
+				if(dimF.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")){
 					int k=0;
 						for(int j=0;j<Cre.size();j++) {
 							if(dimF.get(i).getNom().equals(Cre.get(j).getNomC())) {
@@ -863,7 +863,7 @@ case 0:
 System.out.println("Txt"); 
 JFrame parentFrame = new JFrame();		 
 JFileChooser fileChooser = new JFileChooser();
-fileChooser.setDialogTitle("Spécifier un fichier à enregistrer");   		 
+fileChooser.setDialogTitle("Specifier un fichier a enregistrer");   		 
 int userSelection = fileChooser.showSaveDialog(parentFrame);		 
 if (userSelection == JFileChooser.APPROVE_OPTION) {
 File fileToSave = fileChooser.getSelectedFile();		    
@@ -872,8 +872,8 @@ if(myObje.createNewFile()) {
 
 FileWriter my =  new FileWriter(fileToSave.getAbsolutePath());
 if(ModelInfo!=null) {
-my.write("                          Votre modéle                                                       \n");
-my.write("Le nom de modéle: "+ModelInfo.getnomModel()+"\n");
+my.write("                          Votre modele                                                       \n");
+my.write("Le nom de modele: "+ModelInfo.getnomModel()+"\n");
 my.write("Descreption:  "+ModelInfo.getExplain()+"\n");
 my.write("Dimonsiton et itmes:  \n");
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -911,7 +911,7 @@ my.write("Question"+q+": "+qst.get(q).getQest()+"\n");
 }
 }
 for(int c =0;c<cre.size();c++) {
-my.write("Crétaire"+c+":"+cre.get(c).getNomC()+"\n");
+my.write("Cretaire"+c+":"+cre.get(c).getNomC()+"\n");
 my.write(cre.get(c).getDescreptionC()+"\n");
 
 //afficher qstion 
@@ -940,7 +940,7 @@ case 1: System.out.println("exel");
 int index=5;
 JFrame parentFrameE = new JFrame();		 
 JFileChooser fileChooserE = new JFileChooser();
-fileChooserE.setDialogTitle("Spécifier un fichier à enregistrer");   		 
+fileChooserE.setDialogTitle("Specifier un fichier a enregistrer");   		 
 int userSelectionE = fileChooserE.showSaveDialog(parentFrameE);		 
 if (userSelectionE == JFileChooser.APPROVE_OPTION) {
 File fileToSaveE = fileChooserE.getSelectedFile();  
@@ -950,13 +950,13 @@ if(myObjeD.createNewFile()) {
 XSSFWorkbook workbook = new XSSFWorkbook();
 
 //Create a blank sheet
-XSSFSheet sheet = workbook.createSheet("Modéle Data");
+XSSFSheet sheet = workbook.createSheet("Modele Data");
 
 //This data needs to be written (Object[])
 Map< Integer, Object[]> data = new TreeMap<Integer ,Object[]>();
 if(ModelInfo!=null) {		    	
-data.put(index++, new Object[]{"Nom  de modéle ",ModelInfo.getnomModel()});
-data.put(index++, new Object[]{"Descreption   de modéle ",ModelInfo.getExplain()});
+data.put(index++, new Object[]{"Nom  de modele ",ModelInfo.getnomModel()});
+data.put(index++, new Object[]{"Descreption   de modele ",ModelInfo.getExplain()});
 //////////////////////////////////////////////////////////////////////::	
 data.put(index++, new Object[]{"Nom Dimonstion ","Descreption De dimonsion","Dimonstion mere","Qeustion"});
 
@@ -1049,7 +1049,7 @@ break;
 case 2:  System.out.println("doc"); 
 JFrame parentFrameD = new JFrame();		 
 JFileChooser fileChooserD = new JFileChooser();
-fileChooserD.setDialogTitle("Spécifier un fichier à enregistrer");   		 
+fileChooserD.setDialogTitle("Specifier un fichier a enregistrer");   		 
 int userSelectionD = fileChooserD.showSaveDialog(parentFrameD);		 
 if (userSelectionD == JFileChooser.APPROVE_OPTION) {
 File fileToSaveD = fileChooserD.getSelectedFile();  
@@ -1064,7 +1064,7 @@ if(ModelInfo!=null) {
 //Set Bold an Italic
 XWPFRun paragraphOneRunOne = paragraph.createRun();
 paragraphOneRunOne.setBold(true);
-paragraphOneRunOne.setText("Le nom de modéle:   "+ModelInfo.getnomModel());
+paragraphOneRunOne.setText("Le nom de modele:   "+ModelInfo.getnomModel());
 paragraphOneRunOne.addBreak();
 paragraphOneRunOne.setText("Descreption: "+ModelInfo.getExplain());
 paragraphOneRunOne.addBreak();
@@ -1121,7 +1121,7 @@ paragraphOneRunOne.addBreak();
 }
 for(int c =0;c<cre.size();c++) {
 
-paragraphOneRunOne.setText("Crétaire"+c+":"+cre.get(c).getNomC());
+paragraphOneRunOne.setText("Cretaire"+c+":"+cre.get(c).getNomC());
 paragraphOneRunOne.addBreak();
 paragraphOneRunOne.setText("Descreption: "+cre.get(c).getDescreptionC());
 paragraphOneRunOne.addBreak();	
@@ -1189,7 +1189,7 @@ public String afficher_detaille_model_user(Model model, @PathVariable("id")Strin
 	
 	for(int i=0; i<dim.size();i++) {
 	//if cretaire selection qstion eamr 
-	if(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")) {
+	if(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")) {
 		int k=0;
 			for(int j=0;j<Cre.size();j++) {
 				if(dim.get(i).getNom().equals(Cre.get(j).getNomC())) {
@@ -1312,7 +1312,7 @@ public String afficher_detaille_r(Model model, @PathVariable("id")String id, For
 	
 	for(int i=0; i<dim.size();i++) {
 	//if cretaire selection qstion eamr 
-	if(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")) {
+	if(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")) {
 		int k=0;
 			for(int j=0;j<Cre.size();j++) {
 				if(dim.get(i).getNom().equals(Cre.get(j).getNomC())) {
@@ -1406,7 +1406,7 @@ public void dwolnolad_text(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimons
 	ArrayList<Hypothse>hyp,ArrayList<choix>choixx,ArrayList<Moderateur>Mod) throws IOException{
 	JFrame parentFrame = new JFrame();		 
 	JFileChooser fileChooser = new JFileChooser();
-	fileChooser.setDialogTitle("Spécifier un fichier à enregistrer");   		 
+	fileChooser.setDialogTitle("Specifier un fichier a enregistrer");   		 
 	int userSelection = fileChooser.showSaveDialog(parentFrame);		 
 	if (userSelection == JFileChooser.APPROVE_OPTION) {
 	File fileToSave = fileChooser.getSelectedFile();		    
@@ -1414,17 +1414,17 @@ public void dwolnolad_text(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimons
 	if(myObje.createNewFile()) {
 	FileWriter my =  new FileWriter(fileToSave.getAbsolutePath());
 	if(f!=null) {
-	my.write("                         Information sur le modéle                                         \n");
-	my.write("Le nom de ce modéle est:  "+f.getnomModel()+"\n");
+	my.write("                         Information sur le modele                                         \n");
+	my.write("Le nom de ce modele est:  "+f.getnomModel()+"\n");
 	my.write("Descreption: "+f.getExplain()+"\n");
 	if(a!=null) {
 	my.write("Article :  \n");
-	my.write("Titre: "+a.getTitle()+"\n"); my.write("Résume: "+a.getResume()+"\n"); my.write("MoteCle: "+a.getMotecle()+"\n");  my.write("DOI: "+a.getDoi()+"\n");  my.write("Issn: "+a.getIssn()+"\n");  my.write("Url: "+a.getUrl()+"\n"); my.write("Réference  bibloigraphique: "+a.getRefernceArticle()+"\n");  
+	my.write("Titre: "+a.getTitle()+"\n"); my.write("Resume: "+a.getResume()+"\n"); my.write("MoteCle: "+a.getMotecle()+"\n");  my.write("DOI: "+a.getDoi()+"\n");  my.write("Issn: "+a.getIssn()+"\n");  my.write("Url: "+a.getUrl()+"\n"); my.write("Reference  bibloigraphique: "+a.getRefernceArticle()+"\n");  
 	}
 	if(bf !=null) {
 	my.write("Auteur:   \n");
 	for(int au=0;au<bf.size();au++) {
-	my.write("Nom: "+bf.get(au).getNom()+" , "+bf.get(au).getPrenom()+" ,"); my.write("Université: "+bf.get(au).getUnivers()+ "Position: "+bf.get(au).getPosition()+"\n"); 
+	my.write("Nom: "+bf.get(au).getNom()+" , "+bf.get(au).getPrenom()+" ,"); my.write("Universite: "+bf.get(au).getUnivers()+ "Position: "+bf.get(au).getPosition()+"\n"); 
 	}
 	}
 	my.write("Dimonsiton et itmes:  \n");
@@ -1441,7 +1441,7 @@ public void dwolnolad_text(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimons
 				my.write("Descreption: " +dim.get(i).getDescreption()+"\n");					
 		}
 	if(dim.get(i).getNommere().equals(dim.get(j).getNom()) && 
-			(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére"))){
+			(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere"))){
 			my.write("cretaire "+i+":"+dim.get(i).getNom()+"\n");
 			my.write("Descreption: "+dim.get(i).getDescreption()+"\n");
 			//afficher qstion 
@@ -1452,14 +1452,14 @@ public void dwolnolad_text(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimons
 				if(choixx.get(ch).getQstion().equals(qst.get(q).getQest())) {
 					my.write(choixx.get(ch).getChoix()+"\n");
 				}else {
-				my.write("faible __ __ __ __ __ __ __ éleve.\n");
+				my.write("faible __ __ __ __ __ __ __ eleve.\n");
 				}}}
 		}
 				}
 	
 	}
 		}
-		if((dim.get(j).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")) && ((dim.get(j).getNommere()==null))) {	
+		if((dim.get(j).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")) && ((dim.get(j).getNommere()==null))) {	
 			my.write("cretaire "+j+":"+dim.get(j).getNom()+"\n");
 			my.write("Descreption: "+dim.get(j).getDescreption()+"\n");
 			//afficher qstion 
@@ -1470,14 +1470,14 @@ public void dwolnolad_text(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimons
 				if(choixx.get(ch).getQstion().equals(qst.get(q).getQest())) {
 					my.write(choixx.get(ch).getChoix()+"\n");
 				}else {
-				my.write("faible __ __ __ __ __ __ __ éleve.\n");
+				my.write("faible __ __ __ __ __ __ __ eleve.\n");
 				}}}
 		}
 		}
 	}
 	//////hypothese
 	if(hyp.size()==0) {
-		my.write("pas des hypothéese et des moderateur pour ce modéle.");
+		my.write("pas des hypotheese et des moderateur pour ce modele.");
 	}else {
 	for(int hp=0;hp<hyp.size();hp++) {
 		my.write("hypothese enonce : "+hyp.get(hp).getEnonceHypothse()+"  ");
@@ -1503,7 +1503,7 @@ public void dwolnolad_excel(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimon
 	int index=5;
 	JFrame parentFrameE = new JFrame();		 
 	JFileChooser fileChooserE = new JFileChooser();
-	fileChooserE.setDialogTitle("Spécifier un fichier à enregistrer");   		 
+	fileChooserE.setDialogTitle("Specifier un fichier a enregistrer");   		 
 	int userSelectionE = fileChooserE.showSaveDialog(parentFrameE);		 
 	if (userSelectionE == JFileChooser.APPROVE_OPTION) {
 	File fileToSaveE = fileChooserE.getSelectedFile();  
@@ -1513,26 +1513,26 @@ public void dwolnolad_excel(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimon
 	XSSFWorkbook workbook = new XSSFWorkbook();
 
 	//Create a blank sheet
-	XSSFSheet sheet = workbook.createSheet("Modéle Data");
+	XSSFSheet sheet = workbook.createSheet("Modele Data");
 
 	//This data needs to be written (Object[])
 	Map< Integer, Object[]> data = new TreeMap<Integer ,Object[]>();
 	if(f!=null) {		    	
-	data.put(index++, new Object[]{"Nom  de modéle ",f.getnomModel()});
-	data.put(index++, new Object[]{"Descreption   de modéle ",f.getExplain()});
+	data.put(index++, new Object[]{"Nom  de modele ",f.getnomModel()});
+	data.put(index++, new Object[]{"Descreption   de modele ",f.getExplain()});
 	data.put(index++, new Object[]{"",""});
 	if(a!=null) {
 	data.put(index++, new Object[]{"title article",a.getTitle()});
-	data.put(index++, new Object[]{"Résume",a.getResume()});
+	data.put(index++, new Object[]{"Resume",a.getResume()});
 	data.put(index++, new Object[]{"MoteCle",a.getMotecle()});
 	data.put(index++, new Object[]{"DOI",a.getDoi()});
 	data.put(index++, new Object[]{"Issn",a.getIssn()});
 	data.put(index++, new Object[]{"url",a.getUrl()});
-	data.put(index++, new Object[]{"Réference bibloigraphique",a.getRefernceArticle()});
+	data.put(index++, new Object[]{"Reference bibloigraphique",a.getRefernceArticle()});
 	}
 	data.put(index++, new Object[]{""});
 	if(bf!=null) {
-	data.put(index++, new Object[]{"Nom ","Prénom","Universite","Position","Date de naissance"});
+	data.put(index++, new Object[]{"Nom ","Prenom","Universite","Position","Date de naissance"});
 	for(int au=0;au<bf.size();au++) {
 		data.put(index++, new Object[]{bf.get(au).getNom(),bf.get(au).getPrenom(),bf.get(au).getUnivers(),bf.get(au).getPosition(),bf.get(au).getDatedenaissance()});
 	}
@@ -1548,7 +1548,7 @@ for(int j =0;j<dim.size();j++) {
 			data.put(index++, new Object[] {dim.get(i).getNom(),dim.get(i).getDescreption(),dim.get(i).getNommere(),"",""});				
 	}
 if(dim.get(i).getNommere().equals(dim.get(j).getNom()) && 
-		(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére"))){
+		(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere"))){
 		//afficher qstion 
 		for(int q=0; q<qst.size();q++) {
 		if(qst.get(q).getCretaire().equals(dim.get(i).getNom())) {
@@ -1558,7 +1558,7 @@ if(dim.get(i).getNommere().equals(dim.get(j).getNom()) &&
 						data.put(index++, new Object[] {dim.get(i).getNom(),dim.get(i).getDescreption(),dim.get(i).getNommere(),qst.get(q).getQest(),choixx.get(ch).getChoix()});
 					}}
 			}else {
-				data.put(index++, new Object[] {dim.get(i).getNom(),dim.get(i).getDescreption(),dim.get(i).getNommere(),qst.get(q).getQest(),"faible __ __ __ __ __ __ __ éleve."});
+				data.put(index++, new Object[] {dim.get(i).getNom(),dim.get(i).getDescreption(),dim.get(i).getNommere(),qst.get(q).getQest(),"faible __ __ __ __ __ __ __ eleve."});
 			}
 		}
 	}
@@ -1566,7 +1566,7 @@ if(dim.get(i).getNommere().equals(dim.get(j).getNom()) &&
 
 }
 	}
-	if((dim.get(j).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")) && ((dim.get(j).getNommere()==null))) {	
+	if((dim.get(j).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")) && ((dim.get(j).getNommere()==null))) {	
 
 		//afficher qstion 
 		for(int q=0; q<qst.size();q++) {
@@ -1576,7 +1576,7 @@ if(dim.get(i).getNommere().equals(dim.get(j).getNom()) &&
 				data.put(index++, new Object[] {dim.get(j).getNom(),dim.get(j).getDescreption(),dim.get(j).getNommere(),qst.get(q).getQest(),choixx.get(ch).getChoix()});
 
 			}else {
-				data.put(index++, new Object[] {dim.get(j).getNom(),dim.get(j).getDescreption(),dim.get(j).getNommere(),qst.get(q).getQest(),"faible __ __ __ __ __ __ __ éleve."});
+				data.put(index++, new Object[] {dim.get(j).getNom(),dim.get(j).getDescreption(),dim.get(j).getNommere(),qst.get(q).getQest(),"faible __ __ __ __ __ __ __ eleve."});
 			}}}
 	}
 	}
@@ -1628,7 +1628,7 @@ public void dwolnolad_world(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimon
 		ArrayList<Hypothse>hyp,ArrayList<choix>choixx,ArrayList<Moderateur>Mod) throws FileNotFoundException, IOException{
 	JFrame parentFrameD = new JFrame();		 
 	JFileChooser fileChooserD = new JFileChooser();
-	fileChooserD.setDialogTitle("Spécifier un fichier à enregistrer");   		 
+	fileChooserD.setDialogTitle("Specifier un fichier a enregistrer");   		 
 	int userSelectionD = fileChooserD.showSaveDialog(parentFrameD);		 
 	if (userSelectionD == JFileChooser.APPROVE_OPTION) {
 	File fileToSaveD = fileChooserD.getSelectedFile();  
@@ -1650,7 +1650,7 @@ public void dwolnolad_world(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimon
 	if(a !=null) {
 		paragraphOneRunOne.setText("L'article de titre : "+a.getTitle());
 		paragraphOneRunOne.addBreak();
-		paragraphOneRunOne.setText("Résume : "+a.getResume());
+		paragraphOneRunOne.setText("Resume : "+a.getResume());
 		paragraphOneRunOne.addBreak();
 		paragraphOneRunOne.setText("Mote cle : "+a.getMotecle());
 		paragraphOneRunOne.addBreak();
@@ -1691,7 +1691,7 @@ public void dwolnolad_world(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimon
 				paragraphOneRunOne.addBreak();				
 		}
 	if(dim.get(i).getNommere().equals(dim.get(j).getNom()) && 
-			(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére"))){
+			(dim.get(i).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere"))){
 		paragraphOneRunOne.setText("Sous dimension"+i+":"+dim.get(i).getNom());
 		paragraphOneRunOne.addBreak();
 		paragraphOneRunOne.setText(dim.get(i).getDescreption());
@@ -1707,11 +1707,11 @@ public void dwolnolad_world(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimon
 					paragraphOneRunOne.setText(choixx.get(ch).getChoix());
 					paragraphOneRunOne.addBreak();
 				}else {
-					paragraphOneRunOne.setText("faible __ __ __ __ __ __ __ éleve.");
+					paragraphOneRunOne.setText("faible __ __ __ __ __ __ __ eleve.");
 					paragraphOneRunOne.addBreak();
 			
 				}}}	}}}}
-		if((dim.get(j).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")) && ((dim.get(j).getNommere()==null))) {	
+		if((dim.get(j).getRdftype().equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")) && ((dim.get(j).getNommere()==null))) {	
 			paragraphOneRunOne.setText("Cretaire "+j+":"+dim.get(j).getNom());
 			paragraphOneRunOne.addBreak();
 			paragraphOneRunOne.setText("Descreption: "+dim.get(j).getDescreption());
@@ -1726,7 +1726,7 @@ public void dwolnolad_world(Form f,Article a,ArrayList<Auteur>bf,ArrayList<Dimon
 					paragraphOneRunOne.setText(choixx.get(ch).getChoix());
 					paragraphOneRunOne.addBreak();				
 				}else {
-					paragraphOneRunOne.setText("faible __ __ __ __ __ __ __ éleve.");
+					paragraphOneRunOne.setText("faible __ __ __ __ __ __ __ eleve.");
 					paragraphOneRunOne.addBreak();	
 				}}}	}	}}
 

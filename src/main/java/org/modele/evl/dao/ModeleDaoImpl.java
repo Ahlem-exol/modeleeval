@@ -160,23 +160,23 @@ public class ModeleDaoImpl implements IModeleDao{
 				"OPTIONAL{  ?model fin:DescreptionDuModule  ?DescreptionDuModule.}}}\r\n" + 
 				"FILTER regex (str(?EnonceHypothes),\""+search+"\",\"i\").}\r\n" + 
 				"\r\n" + 
-				" OPTIONAL{    ?subject fin:Réference  ?Réference.\r\n" + 
-				"?article fin:referencePar ?Réference.\r\n" + 
+				" OPTIONAL{    ?subject fin:Reference  ?Reference.\r\n" + 
+				"?article fin:referencePar ?Reference.\r\n" + 
 				"OPTIONAL{\r\n" + 
 				"                      ?model fin:trouverDans ?article .\r\n" + 
 				"                      ?model fin:NomModele  ?NomModel.\r\n" + 
 				"OPTIONAL{  ?model fin:DescreptionDuModule  ?DescreptionDuModule.}}\r\n" + 
-				"?dim  fin:DimReferencePar ?Réference.\r\n" + 
+				"?dim  fin:DimReferencePar ?Reference.\r\n" + 
 				"OPTIONAL{ ?dim fin:SeMesurePar ?subject .\r\n" + 
 				"                      ?model fin:SeComposeDE ?dim .\r\n" + 
 				"                      ?model fin:NomModele  ?NomModel.\r\n" + 
 				"OPTIONAL{  ?model fin:DescreptionDuModule  ?DescreptionDuModule.}}\r\n" + 
-				"?qeustion  fin:QstReferencePar ?Réference.\r\n" + 
+				"?qeustion  fin:QstReferencePar ?Reference.\r\n" + 
 				"OPTIONAL{ ?dimonsion1 fin:SeMesurePar ?qeustion .\r\n" + 
 				"                      ?model fin:SeComposeDE ?dimonsion1 .\r\n" + 
 				"                      ?model fin:NomModele  ?NomModel.\r\n" + 
 				"OPTIONAL{  ?model fin:DescreptionDuModule  ?DescreptionDuModule.}}\r\n" + 
-				"FILTER regex (str(?Réference),\""+search+"\",\"i\").}\r\n" + 
+				"FILTER regex (str(?Reference),\""+search+"\",\"i\").}\r\n" + 
 				"\r\n" + 
 				"\r\n" + 
 				" OPTIONAL{    ?subject fin:TitreDeLarticle  ?TitreDeLarticle.\r\n" + 
@@ -377,7 +377,7 @@ public class ModeleDaoImpl implements IModeleDao{
 				"SELECT DISTINCT ?x   ?Article ?resume  ?TitreDeLarticle ?doi ?MoteCle ?refernce ?ISSN ?Url \r\n" + 
 				"WHERE {\r\n" + 
 				"  ?x    fin:NomModele  ?y.\r\n  " + 
-				"OPTIONAL{?x   fin:trouverDans ?Article.   ?Article fin:referencePar ?ref. ?ref fin:Réference ?refernce. \r\n" + 
+				"OPTIONAL{?x   fin:trouverDans ?Article.   ?Article fin:referencePar ?ref. ?ref fin:Reference ?refernce. \r\n" + 
 				"OPTIONAL{            ?Article fin:Resume ?resume.}\r\n" + 
 				"OPTIONAL{           ?Article fin:TitreDeLarticle ?TitreDeLarticle.}\r\n" + 
 				" OPTIONAL{            ?Article fin:DOI ?doi.}\r\n" + 
@@ -465,7 +465,7 @@ public class ModeleDaoImpl implements IModeleDao{
 				if(REF !=null) {
 					refernce =REF.getString();
 				}else {
-					refernce ="pas de réference  pour cette ARTICLE ";
+					refernce ="pas de reference  pour cette ARTICLE ";
 				}
 				
 				articel.setDoi(DOI);
@@ -496,7 +496,7 @@ public class ModeleDaoImpl implements IModeleDao{
 				"OPTIONAL{            ?Auteur fin:Ecrire ?Article.}\r\n" + 
 				"OPTIONAL{           ?Auteur fin:Nom ?nom.}\r\n" + 
 				"                 OPTIONAL{            ?Auteur fin:Prenom ?prenom.}\r\n" + 
-				"                  OPTIONAL{           ?Auteur fin:Université ?universite.}"
+				"                  OPTIONAL{           ?Auteur fin:Universite ?universite.}"
 				+ " OPTIONAL{           ?Auteur fin:DateDeNaissance ?DateDeNaissance.}"
 				+ "  OPTIONAL{           ?Auteur fin:Position ?position.}\r\n" + 
 				"}\r\n" + 
@@ -597,7 +597,7 @@ public class ModeleDaoImpl implements IModeleDao{
 				"				WHERE {\r\n" + 
 				"				?x  fin:NomModele  ?y. \r\n" + 
 				"				?x  fin:SeComposeDE ?dim.\r\n" + 
-				"               OPTIONAL{?Mere fin:MèreDE ?dim. ?Mere fin:NomDimension ?nomMere.?dim fin:NomDimension ?nomDim. }     "
+				"               OPTIONAL{?Mere fin:MereDE ?dim. ?Mere fin:NomDimension ?nomMere.?dim fin:NomDimension ?nomDim. }     "
 				+ "              ?dim  rdf:type ?rdftype.\r\n" + 			
 				"				?dim fin:NomDimension ?nomDim.\r\n" + 
 				"				OPTIONAL{ ?dim fin:DescreptionDimension ?DescreptionDimension.}\r\n" + 
@@ -952,8 +952,8 @@ a.setIdmoder(l);
 				"				WHERE {\r\n" + 
 				"				?x    fin:NomModele  ?y.\r\n" + 
 				"				 OPTIONAL{?x   fin:SeComposeDE ?Cretaire.\r\n" + 
-				"                ?Cretaire  rdf:type fin:Critére.       \r\n" + 
-				"			MINUS{     ?Dimonsion fin:MèreDE ?Cretaire. }\r\n" + 
+				"                ?Cretaire  rdf:type fin:Critere.       \r\n" + 
+				"			MINUS{     ?Dimonsion fin:MereDE ?Cretaire. }\r\n" + 
 				" ?Cretaire fin:NomDimension ?NomCreatair.}   } ";
 		Query query =QueryFactory.create(queryString);
 		QueryExecution qexec = QueryExecutionFactory.create(query,model);
@@ -983,7 +983,7 @@ a.setIdmoder(l);
 				if(enonce !=null) {
 					prenoma =enonce.getString();
 				}else {
-					prenoma =" Le modéle de cette cretaire  ";
+					prenoma =" Le modele de cette cretaire  ";
 				}
 				
 
@@ -995,7 +995,7 @@ a.setIdmoder(l);
 				if(Descreption !=null) {
 					DescreptionC =enonce.getString();
 				}else {
-					DescreptionC =" Le modéle de cette cretaire  ";
+					DescreptionC =" Le modele de cette cretaire  ";
 				}
 				
 				a.setNomC(nomA);
@@ -1021,7 +1021,7 @@ a.setIdmoder(l);
 				"				SELECT      DISTINCT  ?dim ?descreption   \r\n" + 
 				"				WHERE {\r\n" + 
 				"			  OPTIONAL{ 	 ?x    fin:NomDimension  ?dim.   OPTIONAL{ ?x    fin:DescreptionDimension  ?descreption. }     \r\n" + 
-				"             ?x fin:MèreDE ?sousDim.}\r\n" + 				           
+				"             ?x fin:MereDE ?sousDim.}\r\n" + 				           
 				"}";			
 		Query query =QueryFactory.create(queryString);
 		QueryExecution qexec = QueryExecutionFactory.create(query,model);
@@ -1125,7 +1125,7 @@ a.setIdmoder(l);
 	    DimTmp.add(dimmer);
 		 //getand put in i th liste
 	for(int i =0;i<typesDim.size();i++) {
-		if(typesDim.get(i).equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critére")) {
+		if(typesDim.get(i).equals("http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#Critere")) {
 			//rana f creatir sma lh9na dim lkhra 
 			
 		}else {
@@ -1138,7 +1138,7 @@ a.setIdmoder(l);
 						"							WHERE {\r\n" + 
 						"							OPTIONAL{ ?x    fin:NomDimension  ?NomSousDim.   OPTIONAL{ ?x    fin:DescreptionDimension  ?descreption. }   \r\n" + 
 						"							\r\n" + 
-						"			              ?y fin:MèreDE ?x. \r\n" + 
+						"			              ?y fin:MereDE ?x. \r\n" + 
 						"			              ?y fin:NomDimension \""+DimTmp.get(i)+"\".\r\n" + 
 						"			               ?x rdf:type ?type          \r\n" + 
 						"			  }	}";
@@ -1213,13 +1213,13 @@ a.setIdmoder(l);
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
 				+ " PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>"
 				+ "DELETE{"
-				+ "?dimon fin:Réference \""+refernceOld+"\"."
+				+ "?dimon fin:Reference \""+refernceOld+"\"."
 				+ "}"
 				+ "INSERT{"
-				+ "?dimon fin:Réference \""+Refernce+"\"."
+				+ "?dimon fin:Reference \""+Refernce+"\"."
 				+ "}"
 				+ "WHERE{"
-				+ "?dimon fin:Réference \""+refernceOld+"\"."
+				+ "?dimon fin:Reference \""+refernceOld+"\"."
 				+ "}";
 		
 		UpdateRequest queryA =UpdateFactory.create(queryString);
@@ -1246,7 +1246,7 @@ a.setIdmoder(l);
 				+ "?dimon fin:NomModele \""+nom+"\"."
 				+ "?dimon fin:DescreptionDuModule \""+descreption+"\"."
 				+ "}"
-				+ "WHERE{?dimon rdf:type fin:Modéle. "
+				+ "WHERE{?dimon rdf:type fin:Modele. "
 				+ "?dimon fin:NomModele \""+oldNom+"\"."
 				+ "?dimon fin:DescreptionDuModule \""+odldescreption+"\".}";
 		
@@ -1326,21 +1326,21 @@ a.setIdmoder(l);
 				+ "?Auteru fin:Prenom \""+prenomold+"\"."
 				+ "?Auteru fin:DateDeNaissance \""+datnold+"\"."
 				+ "?Auteru fin:Position \""+infoold+"\"."
-				+ "?Auteru fin:Université \""+universiteold+"\".}"
+				+ "?Auteru fin:Universite \""+universiteold+"\".}"
 
 				+ "INSERT{"
 				+ "?Auteru fin:Nom \""+nom+"\"."
 				+ "?Auteru fin:Prenom \""+prenom+"\"."
 				+ "?Auteru fin:DateDeNaissance \""+dan+"\"."
 				+ "?Auteru fin:Position \""+info+"\"."
-				+ "?Auteru fin:Université \""+universite+"\".}"
+				+ "?Auteru fin:Universite \""+universite+"\".}"
 				
 				+ "WHERE{?Auteru rdf:type fin:Auteur. "
 				+ "?Auteru fin:Nom \""+nomold+"\"."
 				+ "?Auteru fin:Prenom \""+prenomold+"\"."
 				+ "OPTIONAL{?Auteru fin:DateDeNaissance \""+datnold+"\".}"
 				+ "OPTIONAL{?Auteru fin:Position \""+infoold+"\".}"		
-				+ "OPTIONAL{?Auteru fin:Université \""+universiteold+"\".}}";
+				+ "OPTIONAL{?Auteru fin:Universite \""+universiteold+"\".}}";
 		
 		
 		
@@ -1383,7 +1383,7 @@ a.setIdmoder(l);
 				+ "WHERE{ "
 				+ "?Dimonsion fin:NomDimension \""+nomDimold+"\"."
 				+ "OPTIONAL{?Dimonsion fin:DescreptionDimension \""+Descreptiondimonsionold+"\".}"
-				+ "OPTIONAL{?Mere fin:MèreDE ?Dimonsion."
+				+ "OPTIONAL{?Mere fin:MereDE ?Dimonsion."
 				+ " ?Mere fin:NomDimension \""+mereDimonsionold+"\".}}";
 	
 		UpdateRequest queryA =UpdateFactory.create(queryString);
@@ -1530,7 +1530,7 @@ a.setIdmoder(l);
 							+ "?h fin:EnonceHypothes \""+hypothes+"\"."
 							+ "}"
 							
-							+ "WHERE{?modertaur rdf:type fin:Modérateur."
+							+ "WHERE{?modertaur rdf:type fin:Moderateur."
 							+ "?h fin:ModerePar ?modertaur. "
 							+ "?modertaur fin:NomModerateur \""+moderateurold+"\"."
 							+ "?h fin:EnonceHypothes \""+HypothesOld+"\"."
@@ -1579,7 +1579,7 @@ a.setIdmoder(l);
 		Model model = openFile();	 int nbr=0;
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>\r\n" + 
 				"SELECT (COUNT(*)AS ?nbrcre)  \r\n" + 
-				"WHERE {?subject rdf:type fin:Modéle.\r\n" + 
+				"WHERE {?subject rdf:type fin:Modele.\r\n" + 
 				"  \r\n" + 
 				" }";
 		Query query =QueryFactory.create(queryString);
@@ -1801,7 +1801,7 @@ a.setIdmoder(l);
 		Model model = openFile();	 int nbr=0;
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>\r\n" + 
 				"SELECT (COUNT(*)AS ?nbrcre)  \r\n" + 
-				"WHERE {?subject rdf:type fin:Modérateur.\r\n" + 
+				"WHERE {?subject rdf:type fin:Moderateur.\r\n" + 
 				"  \r\n" + 
 				" }";
 		Query query =QueryFactory.create(queryString);
@@ -1833,7 +1833,7 @@ a.setIdmoder(l);
 		Model model = openFile();	 int nbr=0;
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>\r\n" + 
 				"SELECT (COUNT(*)AS ?nbrcre)  \r\n" + 
-				"WHERE {?subject rdf:type fin:Critére.\r\n" + 
+				"WHERE {?subject rdf:type fin:Critere.\r\n" + 
 				"  \r\n" + 
 				" }";
 		Query query =QueryFactory.create(queryString);
@@ -1863,7 +1863,7 @@ a.setIdmoder(l);
 		Model model = openFile();	 int nbr=0;
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>\r\n" + 
 				"SELECT (COUNT(*)AS ?nbrcre)  \r\n" + 
-				"WHERE {?subject rdf:type fin:RéferenceBibloigraphique.\r\n" + 
+				"WHERE {?subject rdf:type fin:ReferenceBibloigraphique.\r\n" + 
 				"  \r\n" + 
 				" }";
 		Query query =QueryFactory.create(queryString);
@@ -1894,7 +1894,7 @@ a.setIdmoder(l);
 	public void addref(String ref,String id) {
 		Model model = openFile();	
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>"
-				+ "INSERT{<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:RéferenceBibloigraphique. "
+				+ "INSERT{<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:ReferenceBibloigraphique. "
 				+ " <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:NomModele \""+ref+"\"."
 				
 				+ "}WHERE{}";
@@ -1915,7 +1915,7 @@ a.setIdmoder(l);
 	
 	Model model = openFile();	
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>"
-				+ "INSERT{<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:Modéle. "
+				+ "INSERT{<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:Modele. "
 				+ " <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:NomModele \""+nomModel+"\"."
 				+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:DescreptionDuModule \""+descreptionModel+"\"."
 				+ "}WHERE{}";
@@ -1967,7 +1967,7 @@ a.setIdmoder(l);
 				+ "INSERT{<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:Auteur."
 				+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:Nom \""+nom+"\"."
 				+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:Prenom \""+prenom+"\"."
-				+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:Université \""+universite+"\"."
+				+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:Universite \""+universite+"\"."
 			    + "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:Ecrire ?Article."
 				+ "}WHERE{?x    fin:NomModele  \""+modelM+"\"."
 				+ "        ?x   fin:trouverDans ?Article."			
@@ -1996,7 +1996,7 @@ a.setIdmoder(l);
 					+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:NomDimension \""+nomDim+"\"."
 					+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:DescreptionDimension \""+Descreptiondimonsion+"\"."
 				    + "?x   fin:SeComposeDE <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">."
-				    + "?dim fin:MèreDE <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">. "
+				    + "?dim fin:MereDE <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">. "
 					+ "}WHERE{"
 					+ "?x   fin:NomModele \""+modelM+"\"."
 					+ "OPTIONAL{?x fin:SeComposeDE ?dim. "
@@ -2018,11 +2018,11 @@ a.setIdmoder(l);
 
 					String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>"
 							+ "INSERT{"
-							+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:Critére."
+							+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:Critere."
 							+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:NomDimension \""+nomDim+"\"."
 							+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:DescreptionDimension \""+Descreptiondimonsion+"\"."
 						    + "?x   fin:SeComposeDE <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">."
-						    + "?dim fin:MèreDE <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">. "
+						    + "?dim fin:MereDE <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">. "
 							+ "}WHERE{"
 							+ "?x   fin:NomModele \""+modelM+"\"."
 							+ "OPTIONAL{?x fin:SeComposeDE ?dim. "
@@ -2128,7 +2128,7 @@ public void addModerateur(String moderateur, String hypothses, String modelM, St
 
 	String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX fin: <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#>"
 			+ "INSERT{"
-			+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:Modérateur."
+			+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">  rdf:type fin:Moderateur."
 			+ "<http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+"> fin:NomModerateur \""+moderateur+"\"."
 			+ " ?hypo fin:ModerePar <http://www.semanticweb.org/user/ontologies/2020/6/fin.owl#"+id+">."
 			+ "}WHERE{"
