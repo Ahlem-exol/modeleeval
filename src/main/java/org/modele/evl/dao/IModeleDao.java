@@ -16,7 +16,6 @@ import org.modele.model.choix;
 public interface IModeleDao {
 	
 	public Model openFile();
-	//Accéder
 	public ArrayList<Form>  getNomModel();
 	//search
 	public ArrayList<Form> SearchReseult(String search);
@@ -34,7 +33,7 @@ public interface IModeleDao {
 	public ArrayList<Dimonsion> GetDimHSD();
 	public ArrayList<Qstionne> GetQestByCre(String nomCre);
 	public ArrayList<Dimonsion> GetSubDim(String mere);
-	// ajouter modéle de l'ontology 
+	
 		public void AddModel(String nomModel,String descreptionModel,String nomModelid);
 		public void addArticle(String Title,String resume,String mcle,String url, String ISSn,String doi,String model,String id);
 		public void addAuteru(String nom,String prenom,String universite,String info,String modelM,String id);
@@ -44,7 +43,6 @@ public interface IModeleDao {
 		public void addChoix(String choix,String qeustion ,String model,String id);
 		public void addModerateur(String moderateur,String hypothses,String modelname,String id);
 		public void addref(String ref,String id);
-// update modéle de l 'ontology
 	public void UpdateModel(String nom,String descreption,String oldNom,String odldescreption);
 	public void UpdateArticle(String Title,String resume,String mcle,String url, String ISSn,String doi,String Titleold,String resumeold,String mcleold,String urlOld, String ISSnold,String doiold);
 	public void UpdateAuteru(String nom,String prenom,String universite,String info,String dan, String datnol,String nomold,String prenomold,String universiteold,String infoold);
